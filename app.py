@@ -37,13 +37,14 @@ EMOTION_COLOR = {
 }
 
 @st.cache_resource
+@st.cache_resource
 def load_model():
-    """Load the trained Keras model."""
     try:
-       import tf_keras as keras
-model = keras.models.load_model('model_file.h5')
+        import tf_keras as keras
+        model = keras.models.load_model('model_file.h5')
         return model
     except Exception as e:
+        st.warning(f"Model not loaded: {e}")
         return None
 
 @st.cache_resource
@@ -209,6 +210,8 @@ with tab2:
         else:
             st.image(image, use_container_width=True)
             st.warning("Model not loaded. Cannot predict emotions.")
-
+git add app.py
+git commit -m "fix: add except block to load_model try statement"
+git push
 st.divider()
 st.caption("Built with Streamlit · CNN trained on FER2013 · OpenCV face detection")
