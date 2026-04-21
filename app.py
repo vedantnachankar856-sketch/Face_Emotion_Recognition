@@ -40,8 +40,8 @@ EMOTION_COLOR = {
 def load_model():
     """Load the trained Keras model."""
     try:
-        from tensorflow.keras.models import load_model as keras_load
-        model = keras_load('model_file.h5')
+       import tf_keras as keras
+model = keras.models.load_model('model_file.h5')
         return model
     except Exception as e:
         return None
